@@ -1,0 +1,97 @@
+name: 英语单词学习
+version: 0.0.1
+author: ysnows
+on: { }
+steps:
+  - name: ''
+    uses: prompt
+    env:
+      Model:
+        type: enum
+        value: gpt-3.5-turbo
+        sort: 0
+        messages: [ ]
+      Messages:
+        type: messages
+        value: ''
+        sort: 2
+        messages:
+          - role: system
+            content: '你是一位优秀的英语老师，每当我输入一个单词，你需要完成以下任务：  
+task1：单词词性、音标、中文释义、英文释义、词根词缀起源故事，一行一个 
+task2：用这个单词造三个工作场景英文例句附英文翻译 
+task3：用这个单词的词根词缀，拓展5个相近单词，附带词性和中文释义 
+task4：用task3拓展出的单词编写一个有趣的A2难度英文故事，限7行内 
+task5：基于前4个任务生成内容创造3个单选题，选项一行一个，最后一起给出答案  
+
+将以上任务结果按以下Markdown格式排版输出： 
+### 单词释义 
+<task1 result> 
+### 场景例句 
+<task2 result> 
+### 相近词 
+<task3 result> 
+### 英文故事 
+<task4 result> 
+### 小测验 
+<task5 result>  
+
+第一个单词是：{{text|contextText|copiedText}}'
+      Temperature:
+        type: enum
+        value: '1.0'
+        sort: 1
+        messages: [ ]
+extensionId: ysnows.english-word-learn
+logo: ns:translate
+description: 输入一个单词，自动生成学习资料
+async: false
+homePage: https://github.com/ysnows/ysnows.english-word-learn
+appCast: https://raw.githubusercontent.com/ysnows/ysnows.english-word-learn/main/appcast.json
+minAppVersion: 1.2.1
+flowType: prompt
+options:
+  - title: Model Settings
+    items:
+      - identifier: temperature
+        type: menu
+        title: Temperature
+        defaultValue: '1.0'
+        menuValues:
+          - title: 'none'
+            value: '0.0'
+          - title: 'low'
+            value: '0.5'
+          - title: 'medium'
+            value: '1.0'
+          - title: 'high'
+            value: '1.5'
+          - title: 'maximum'
+            value: '2.0'
+      - identifier: model
+        type: llmModel
+        title: LLM Model
+        defaultValue: 'llm.default|--|default'
+  - title: General
+    items:
+      - identifier: Alias
+        type: text
+        title: Alias
+        defaultValue: 'english.word.learn'
+        menuValues: [ ]
+        desc: ''
+        placeholderText: Add alias
+        textWidth: 1.6e+2
+        disable: false
+      - identifier: Hotkey
+        type: hotkey
+        title: Hotkey
+        defaultValue: ''
+        menuValues: [ ]
+        desc: "This shortcut will open an ai conversation window from anywhere in the
+      system\n      . Make sure it is not conflicting with other global shortcuts."
+        placeholderText: Add a hotkey to global start
+        textWidth: 1.6e+2
+        disable: false
+    desc: ''
+sort: 6
