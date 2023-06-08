@@ -1,6 +1,11 @@
 {
   "identifier": "ysnows.english-word-learn",
   "versions": [
-
+    {
+      "version": "0.0.1",
+      "desc": "feat: 1. readme",
+      "url": "https://github.com/ysnows/ysnows.english-word-learn/releases/download/v0.0.1/ysnows.english-word-learn.enconvoplugin",
+      "minAppVersion": "1.1.8"
+    }
   ]
 }
